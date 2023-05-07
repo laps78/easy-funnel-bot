@@ -1,0 +1,26 @@
+{
+  "name": "tarot-funnel-bot",
+  "version": "1.0.0",
+  "description": "A funnel tarot bot with email & telegram chating abilities",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/laps78/tarot-funnel-bot.git"
+  },
+  "keywords": [
+    "tg",
+    "telegram",
+    "email",
+    "bot",
+    "funnel"
+  ],
+  "author": "L.A.P.S.",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/laps78/tarot-funnel-bot/issues"
+  },
+  "homepage": "https://github.com/laps78/tarot-funnel-bot#readme"
+}
