@@ -21,23 +21,36 @@ const bot = new Telebot(api_key);
 let global = null;
 
 // проверяем messages
-console.log("messages parse:");
-console.log("messages type: ", typeof messages);
+//console.log("messages parse:");
+//console.log("messages type: ", typeof messages);
 //console.log("messages:", messages);
-console.log("messages data: ", messages[0].name);
+//console.log("messages data: ", messages[0].name);
 
 // start handler
 bot.on("/start", (msg) => {
-  global = msg;
-  //botShedule(msg.from.id, msg);
-  bot.sendPhoto(msg.from.id, messages[0].image_links[0]);
-  bot.sendPhoto(msg.from.id, messages[0].image_links[1]);
-  msg.reply.text(`Привет, ${msg.from.first_name}! 🌹\n\n${messages[0].text}`);
-  msg.reply.text("====================");
+  const userId = msg.from.id;
+  bot.sendPhoto(userId, messages[0].image_links[0]);
+
+  setTimeout(() => {
+    bot.sendMessage(userId, messages[0].text);
+  }, 1000);
+
+  setTimeout(() => {
+    bot.sendPhoto(userId, messages[0].image_links[1]);
+  }, 2000);
+
+  setTimeout(() => {
+    try {
+      bot.sendPhoto(userId, messages[1].image_links[0]);
+      bot.sendMessage(userId, messages[1].text);
+    } catch (err) {
+      console.log(err);
+    } finally {
+      console.log("finally");
+    }
+  }, 5000);
 });
 
 bot.start();
 
 export default botConfig;
-
-const sheduleFunelMessages = (messages) => {};
