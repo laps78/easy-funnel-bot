@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "type": "module",
   "description": "A funnel tarot bot with email & telegram chating abilities",
-  "main": "index.js",
+  "main": "tarot-fun-bot.js",
   "scripts": {
     "test": "test",
     "start": "node index.js",
@@ -28,9 +28,12 @@
   "homepage": "https://github.com/laps78/tarot-funnel-bot#readme",
   "dependencies": {
     "dotenv": "^16.0.3",
+    "fs": "^0.0.1-security",
     "jest": "^29.5.0",
     "nodemailer": "^6.9.1",
-    "telebot": "^1.4.1"
+    "path": "^0.12.7",
+    "telebot": "^1.4.1",
+    "telegraf": "^4.12.2"
   },
   "devDependencies": {
     "eslint": "^8.40.0",
