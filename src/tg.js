@@ -1,8 +1,7 @@
-import telebot from "telebot";
-import botConfig from "../index";
-import Telebot from "telebot";
+import botConfig from "../src/getenv.js";
+import {Telegraf} from "telegraf";
 
 const api_key = botConfig.tg.tg_api_key;
-const bot = new Telebot(api_key);
+const bot = new Telegraf(api_key);
 
 export default bot;

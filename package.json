@@ -5,7 +5,7 @@
   "description": "A funnel tarot bot with email & telegram chating abilities",
   "main": "tarot-fun-bot.js",
   "scripts": {
-    "test": "test",
+    "test": "node --experimental-vm-modules ./node_modules/.bin/jest",
     "start": "node index.js",
     "lint": ". eslint"
   },
