@@ -11,13 +11,13 @@ a funnel bot with e-mail &amp; telegram chating abilities
 2.1. Клонируем репозиторий с проектом
 
 ```bash
-git clone https://github.com/laps78/tarot-funnel-bot
+git clone https://github.com/laps78/easy-funnel-bot
 ```
 
 2.2. Разрешаем исполнение инсталлятора (install.sh)
 
 ```bash
-sudo chmod +x tarot-funnel-bot/install.sh
+sudo chmod +x easy-funnel-bot/install.sh
 ```
 
 ### Запустите установщик
@@ -25,7 +25,7 @@ sudo chmod +x tarot-funnel-bot/install.sh
 2.3. Запускаем инсталлятор (install.sh)
 
 ```bash
-./tarot-funnel-bot/install.sh
+./easy-funnel-bot/install.sh
 ```
 
 Вы увидите начало процесса установки програмного обеспечения на удаленном сервере. Будут установлены обновления сборки серверного ПО и некоторые дополнительные пакеты, требуемые для работы приложения.
@@ -38,7 +38,7 @@ sudo chmod +x tarot-funnel-bot/install.sh
   ============================================================
   || СОЗДАНИЕ ПОЛЬЗОВАТЕЛЯ НА СЕРВЕРЕ      <<< L.A.P.S. Lab ||
   ||--------------------------------------------------------||
-  || Будет создан пользователь gpt_bot. Вам будет предложено||
+  || Будет создан пользователь funnel_bot. будет предложено ||
   || ввести и подтвердить UNIX пароль, а также заполнить    ||
   || дополнительную информацию о пользователе. Обязательно  ||
   || требуется точно ввести и повторить пароль, остальные   ||
