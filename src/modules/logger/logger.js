@@ -55,18 +55,20 @@ export default class Logger {
    ***/
   saveLog = async () => {
     fs.writeFile("activity.log", data.join("\n"), (error) => {
+      console.log("writefile");
       if (error) {
         console.error(error);
       } else {
-        console.log("Data written to file");
+        console.log(`${this.timeStamp()}: log written to file`);
       }
     });
   };
+
   /***
    * Планирует интервал автосохранения массива @Logger.log в файл ./modules/logger/activity.log
    ***/
   sheduleLogToFile = () => {
     // log to file every 15 minutes:
-    this.interval = setInterval(this.saveLog, 1000 * 60 * 15);
+    this.interval = setInterval(this.saveLog, 1000 * 60);
   };
 }
