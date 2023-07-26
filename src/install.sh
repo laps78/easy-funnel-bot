@@ -51,35 +51,19 @@ echo "|| дополнительную информацию о пользоват
 echo "|| требуется точно ввести и повторить пароль, остальные   ||"
 echo "|| данные можно не указывать - просто нажимайте [enter].  ||"
 echo "============================================================"
-adduser funnel_bot && echo "Пользователь gpt_bot создан"
+adduser funnel_bot && echo "Пользователь funnel_bot создан"
 
 # switch to non-root user & configure user environment
-#sudo apt install python3-virtualenv -y && echo "python3-virtualenv установлен"
 runuser -l funnel_bot -c "export PATH=$HOME/.local/bin:$PATH" && echo "HOME path установлено"
-#runuser -l gpt_bot -c "virtualenv --system-site-packages node" && echo "Виртуальное окружение NODE.js установлено"
-runuser -l funnel_bot -c "cd ~ && npm i" && echo "Требуемые модули библиотек npm подключены."
+runuser -l funnel_bot -c "cd ~ && npm i -g pm2 && npm i" && echo "Требуемые модули библиотек npm подключены."
 
-# additions from support tickets
-mv /root/laps-gpt-install/gpt-bot.py /home/gpt_bot/gpt-bot.py
-chown gpt_bot:gpt_bot /home/gpt_bot/gpt-bot.py
+# copy files to user home path
+mv /root/tarot-funnel-bot/ /home/funnel_bot/
+chown funnel_bot:funnel_bot /home/funnel_bot/
 
 # create env & set api tokens
 clear
 touch .env
-echo "============================================================"
-echo "|| ПОДКЛЮЧЕНИЕ К API OPENAI              <<< L.A.P.S. Lab ||"
-echo "||--------------------------------------------------------||"
-echo "||                                 _____                  ||"  
-echo "|| ________________________________ ___{_}                ||"
-echo "|| _  __ \__  __ \  _ \_  __ \  __  /_  /                 ||"              
-echo "|| / /_/ /_  /_/ /  __/  / / / /_/ /_  /                  ||"             
-echo "|| \____/_  .___/\___//_/ /_/\__,_/ /_/                   ||"            
-echo "||       /_/                                              ||"  
-echo "||********************************************************||"
-echo "|| Введите токен, полученный на сайте openai.com:         ||"
-echo "============================================================"
-read OPENAI_TOKEN
-clear
 echo ""
 echo "============================================================"
 echo "|| ПОДКЛЮЧЕНИЕ К API TELEGRAM            <<< L.A.P.S. Lab ||"
@@ -94,25 +78,24 @@ echo "||********************************************************||"
 echo "|| Введите токен, полученный в Telegram от @botFather:    ||"
 echo "============================================================"
 read TG_TOKEN
-echo "OPENAI_TOKEN=$OPENAI_TOKEN" > .env && echo "openai токен установлен"
-echo "TG_TOKEN=$TG_TOKEN" >> .env && echo "telegram токен установен" && echo "Переменные окружения записаны."
+echo "TG_API_KEY=$TG_TOKEN" >> .env && echo "telegram токен установен" && echo "Переменные окружения записаны."
 
-mv /root/.env /home/gpt_bot/.env && echo "Файл окружения перенесен в корневую папку приложения."
-chown gpt_bot:gpt_bot /home/gpt_bot/.env && echo "Права на файл окружения переданы пользователю бота."
+mv /root/.env /home/tarot-funnel-bot/.env && echo "Файл окружения перенесен в корневую папку приложения."
+chown funnel_bot:funnel_bot /home/funnel_bot/.env && echo "Права на файл окружения переданы пользователю бота."
 
 # install daemon systemctl service
-cat > /etc/systemd/system/laps-gpt-bot.service << EOF
+cat > /etc/systemd/system/tarot-funnel-bot.service << EOF
 [Unit]
-Description=L.A.P.S. GPT Bot v1.1
+Description=L.A.P.S. Lab funnel Bot v0.1
 After=syslog.target
 After=network.target
 
 [Service]
 Type=simple
-User=gpt_bot
-Group=gpt_bot
-WorkingDirectory=/home/gpt_bot
-ExecStart=python3 gpt-bot.py
+User=funnel_bot
+Group=funnel_bot
+WorkingDirectory=/home/funnel_bot
+ExecStart=node index.js
 OOMScoreAdjust=-100
 RestartSec=5
 Restart=always
@@ -121,10 +104,10 @@ Restart=always
 WantedBy=multi-user.target
 EOF
 
-systemctl daemon-reload && systemctl enable laps-gpt-bot && systemctl start laps-gpt-bot && echo "Демон настроен и активирован";
+systemctl daemon-reload && systemctl enable tarot-funnel-bot && systemctl start tarot-funnel-bot && echo "Демон настроен и активирован";
 
 # final commands
 clear
 echo "Установка завершена."
 echo "запрос текущего состояния бота:"
-systemctl status laps-gpt-bot
+systemctl status tarot-funnel-bot
