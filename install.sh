@@ -5,6 +5,8 @@ set -o errexit
 set -o nounset
 set -o pipefail
 
+alias log='vim /var/log/syslog'
+
 # initial actions
 clear
 echo "Запуск скрипта установщика бота на сервер ubuntu..."
@@ -22,11 +24,11 @@ echo "init..."
 
 # install required system packages
 # run standard system updates
-sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y && echo "Системные репозитории успешно обновлены."
+sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y && echo "INSTALL.SH: Системные репозитории успешно обновлены."
 
 # install node-js
 curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
-sudo apt-get install nodejs
+sudo apt-get install nodejs && echo "INSTALL.SH: NODEJS установлен (v16)."
 
 # # download the distribution
 # wget https://nodejs.org/dist/v4.2.3/node-v4.2.3-linux-x64.tar.gz;
@@ -48,7 +50,7 @@ clear
 echo "============================================================"
 echo "|| СОЗДАНИЕ ПОЛЬЗОВАТЕЛЯ НА СЕРВЕРЕ      <<< L.A.P.S. Lab ||"
 echo "||--------------------------------------------------------||"
-echo "|| Будет создан пользователь funnel_bot. Вам будет предложено||"
+echo "|| Будет создан пользователь funnel_bot, будет предложено ||"
 echo "|| ввести и подтвердить UNIX пароль, а также заполнить    ||"
 echo "|| дополнительную информацию о пользователе. Обязательно  ||"
 echo "|| требуется точно ввести и повторить пароль, остальные   ||"
@@ -57,11 +59,11 @@ echo "============================================================"
 adduser funnel_bot && echo "Пользователь funnel_bot создан"
 
 # switch to non-root user & configure user environment
-runuser -l funnel_bot -c "export PATH=$HOME/.local/bin:$PATH" && echo "HOME path установлено"
-runuser -l funnel_bot -c "cd ~ && npm i -g pm2 && npm i" && echo "Требуемые модули библиотек npm подключены."
+runuser -l funnel_bot -c "export PATH=$HOME/.local/bin:$PATH" && echo "INSTALL.SH: HOME path установлено"
+runuser -l funnel_bot -c "cd ~ && npm i -g pm2 && npm i" && echo "INSTALL.SH: Требуемые модули библиотек npm подключены."
 
 # copy files to user home path
-mv /root/tarot-funnel-bot/ /home/funnel_bot/
+mv /root/easy-funnel-bot/ /home/funnel_bot/
 chown funnel_bot:funnel_bot /home/funnel_bot/
 
 # create env & set api tokens
@@ -83,34 +85,38 @@ echo "============================================================"
 read TG_TOKEN
 echo "TG_API_KEY=$TG_TOKEN" >> .env && echo "telegram токен установен" && echo "Переменные окружения записаны."
 
-mv /root/.env /home/tarot-funnel-bot/.env && echo "Файл окружения перенесен в корневую папку приложения."
-chown funnel_bot:funnel_bot /home/funnel_bot/.env && echo "Права на файл окружения переданы пользователю бота."
+mv /root/.env /home/funnel-bot/easy-funnel-bot/.env && echo "Файл окружения перенесен в корневую папку приложения."
+chown funnel_bot:funnel_bot /home/funnel-bot/easy-funnel-bot/.env && echo "Права на файл окружения переданы пользователю бота."
+
+runuser -l funnel_bot -c "pm2 start /home/funnel_bot/easy-funnel-bot/index.js" && echo "INSTALL.SH: pm2 для index.js запущен успешно."
 
 # install daemon systemctl service
-cat > /etc/systemd/system/tarot-funnel-bot.service << EOF
-[Unit]
-Description=L.A.P.S. Lab funnel Bot v0.1
-After=syslog.target
-After=network.target
+# cat > /etc/systemd/system/easy-funnel-bot.service << EOF
+# [Unit]
+# Description=L.A.P.S. Lab funnel Bot v0.1
+# After=syslog.target
+# After=network.target
 
-[Service]
-Type=simple
-User=funnel_bot
-Group=funnel_bot
-WorkingDirectory=/home/funnel_bot
-ExecStart=node index.js
-OOMScoreAdjust=-100
-RestartSec=5
-Restart=always
+# [Service]
+# Type=simple
+# User=funnel_bot
+# Group=funnel_bot
+# WorkingDirectory=/home/funnel_bot/easy-funnel-bot
+# ExecStart=node index.js
+# OOMScoreAdjust=-100
+# RestartSec=5
+# Restart=always
 
-[Install]
-WantedBy=multi-user.target
-EOF
+# [Install]
+# WantedBy=multi-user.target
+# EOF
 
-systemctl daemon-reload && systemctl enable tarot-funnel-bot && systemctl start tarot-funnel-bot && echo "Демон настроен и активирован";
+# systemctl daemon-reload && systemctl enable easy-funnel-bot && systemctl start easy-funnel-bot && echo "Демон настроен и активирован";
 
 # final commands
 clear
 echo "Установка завершена."
-echo "запрос текущего состояния бота:"
-systemctl status tarot-funnel-bot
+# echo "запрос текущего состояния бота:"
+# # systemctl status easy-funnel-bot
+# pm2 monit
+
