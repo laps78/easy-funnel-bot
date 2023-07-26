@@ -25,20 +25,23 @@ echo "init..."
 sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y && echo "Системные репозитории успешно обновлены."
 
 # install node-js
-# download the distribution
-wget https://nodejs.org/dist/v4.2.3/node-v4.2.3-linux-x64.tar.gz;
+curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+sudo apt-get install nodejs
 
-# place the downloaded distribution
-mkdir node
-tar xvf node-v*.tar.?z --strip-components=1 -C ./node
-mkdir node/etc
-echo 'prefix=/usr/local' > node/etc/npmrc
-mv node /opt/
-chown -R root: /opt/node
+# # download the distribution
+# wget https://nodejs.org/dist/v4.2.3/node-v4.2.3-linux-x64.tar.gz;
 
-# make symbolic links
-ln -s /opt/node/bin/node /usr/local/bin/node
-ln -s /opt/node/bin/npm /usr/local/bin/npm
+# # place the downloaded distribution
+# mkdir node
+# tar xvf node-v*.tar.?z --strip-components=1 -C ./node
+# mkdir node/etc
+# echo 'prefix=/usr/local' > node/etc/npmrc
+# mv node /opt/
+# chown -R root: /opt/node
+
+# # make symbolic links
+# ln -s /opt/node/bin/node /usr/local/bin/node
+# ln -s /opt/node/bin/npm /usr/local/bin/npm
 
 # create bot user
 clear
