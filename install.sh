@@ -37,8 +37,8 @@ mv node /opt/
 chown -R root: /opt/node
 
 # make symbolic links
-$ ln -s /opt/node/bin/node /usr/local/bin/node
-$ ln -s /opt/node/bin/npm /usr/local/bin/npm
+ln -s /opt/node/bin/node /usr/local/bin/node
+ln -s /opt/node/bin/npm /usr/local/bin/npm
 
 # create bot user
 clear
