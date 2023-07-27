@@ -26,7 +26,7 @@ sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y && echo "INSTAL
 
 # install node-js
 curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
-sudo apt-get install nodejs && echo "INSTALL.SH: NODEJS установлен (v16)."
+sudo apt-get install nodejs npm -y && node_version=$(node -v) && npm_version=$(npm -v) && echo "INSTALL.SH: NODEJS установлен (node v. $node_version, npm v. $npm_version)."
 
 cd easy-funnel-bot && npm i && echo "INSTALL.sh: npm-зависимости установлены."
 
