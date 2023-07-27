@@ -5,8 +5,6 @@ set -o errexit
 set -o nounset
 set -o pipefail
 
-alias log='vim /var/log/syslog'
-
 # initial actions
 clear
 echo "Запуск скрипта установщика бота на сервер ubuntu..."
@@ -28,22 +26,9 @@ sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y && echo "INSTAL
 
 # install node-js
 curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
-sudo apt-get install nodejs && echo "INSTALL.SH: NODEJS установлен (v16)."
+sudo apt-get install nodejs npm && echo "INSTALL.SH: NODEJS установлен (v16)."
 
-# # download the distribution
-# wget https://nodejs.org/dist/v4.2.3/node-v4.2.3-linux-x64.tar.gz;
-
-# # place the downloaded distribution
-# mkdir node
-# tar xvf node-v*.tar.?z --strip-components=1 -C ./node
-# mkdir node/etc
-# echo 'prefix=/usr/local' > node/etc/npmrc
-# mv node /opt/
-# chown -R root: /opt/node
-
-# # make symbolic links
-# ln -s /opt/node/bin/node /usr/local/bin/node
-# ln -s /opt/node/bin/npm /usr/local/bin/npm
+npm install
 
 # create bot user
 clear
@@ -58,13 +43,14 @@ echo "|| данные можно не указывать - просто нажи
 echo "============================================================"
 adduser funnel_bot && echo "Пользователь funnel_bot создан"
 
+
 # copy files to user home path
 mv /root/easy-funnel-bot/* /home/funnel_bot/
 chown funnel_bot:funnel_bot /home/funnel_bot/
 
 # switch to non-root user & configure user environment
 runuser -l funnel_bot -c "export PATH=$HOME/.local/bin:$PATH" && echo "INSTALL.SH: HOME path установлено"
-runuser -l funnel_bot -c "cd funnel_bot && npm i" && echo "INSTALL.SH: Требуемые модули библиотек npm подключены."
+runuser -l funnel_bot -c "cd funnel_bot && npm i && echo "INSTALL.SH: Требуемые модули библиотек npm подключены."
 
 # create env & set api tokens
 clear
