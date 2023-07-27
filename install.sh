@@ -53,7 +53,7 @@ runuser -l funnel_bot -c "export PATH=$HOME/.local/bin:$PATH" && echo "INSTALL.S
 
 # create env & set api tokens
 #clear
-touch .env
+touch /root/.env && echo "INSTALL.sh: .env создан."
 echo ""
 echo "============================================================"
 echo "|| ПОДКЛЮЧЕНИЕ К API TELEGRAM            <<< L.A.P.S. Lab ||"
@@ -68,7 +68,8 @@ echo "||********************************************************||"
 echo "|| Введите токен, полученный в Telegram от @botFather:    ||"
 echo "============================================================"
 read TG_TOKEN
-echo "TG_API_KEY=$TG_TOKEN" >> .env && echo "telegram токен установен" && echo "Переменные окружения записаны."
+echo "TG_API_KEY=$TG_TOKEN" > /root/.env && echo "INSTALL.sh: telegram api токен установлен."
+echo "" >> /root/.env && echo "Пустая строка в конце файла задана." && echo "Переменные окружения записаны."
 
 mv /root/.env /home/funnel-bot/.env && echo "Файл окружения перенесен в корневую папку приложения."
 chown funnel_bot:funnel_bot /home/funnel-bot/.env && echo "Права на файл окружения переданы пользователю бота."
