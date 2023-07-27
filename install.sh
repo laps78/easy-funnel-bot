@@ -25,26 +25,13 @@ echo "init..."
 sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y && echo "INSTALL.SH: Системные репозитории успешно обновлены."
 
 # install node-js
-curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+curl -sL https://deb.nodesource.com/setup_18.x | sudo -E bash -
 sudo apt-get install nodejs -y && node_version=$(node -v) && npm_version=$(npm -v) && echo "INSTALL.SH: NODEJS установлен (node v. $node_version, npm v. $npm_version)."
 
-cd easy-funnel-bot && npm i && echo "INSTALL.sh: npm-зависимости установлены."
-
-# create bot user
-#clear
-echo "============================================================"
-echo "|| СОЗДАНИЕ ПОЛЬЗОВАТЕЛЯ НА СЕРВЕРЕ      <<< L.A.P.S. Lab ||"
-echo "||--------------------------------------------------------||"
-echo "|| Будет создан пользователь funnel_bot, будет предложено ||"
-echo "|| ввести и подтвердить UNIX пароль, а также заполнить    ||"
-echo "|| дополнительную информацию о пользователе. Обязательно  ||"
-echo "|| требуется точно ввести и повторить пароль, остальные   ||"
-echo "|| данные можно не указывать - просто нажимайте [enter].  ||"
-echo "============================================================"
-adduser funnel_bot && echo "Пользователь funnel_bot создан"
-
-pwd
-ls -A
+# install npm deps
+cd easy-funnel-bot && npm install ----save && echo "INSTALL.sh: npm-зависимости установлены."
+npm install dotenv && dotenv_view=$(npm view dotenv)
+echo "$dotenv_view доустановлен"
 
 # create env & set api tokens
 #clear
@@ -62,9 +49,22 @@ echo "||                     /____/                             ||"
 echo "||********************************************************||"
 echo "|| Введите токен, полученный в Telegram от @botFather:    ||"
 echo "============================================================"
-read TG_TOKEN
+read TG_TOKEN -r
 echo "TG_API_KEY=$TG_TOKEN" > .env && echo "INSTALL.sh: telegram api токен установлен."
 echo "" >> .env && echo "Пустая строка в конце файла задана." && echo "Переменные окружения записаны."
+
+# create bot system user
+#clear
+echo "============================================================"
+echo "|| СОЗДАНИЕ ПОЛЬЗОВАТЕЛЯ НА СЕРВЕРЕ      <<< L.A.P.S. Lab ||"
+echo "||--------------------------------------------------------||"
+echo "|| Будет создан пользователь funnel_bot, будет предложено ||"
+echo "|| ввести и подтвердить UNIX пароль, а также заполнить    ||"
+echo "|| дополнительную информацию о пользователе. Обязательно  ||"
+echo "|| требуется точно ввести и повторить пароль, остальные   ||"
+echo "|| данные можно не указывать - просто нажимайте [enter].  ||"
+echo "============================================================"
+adduser funnel_bot && echo "Пользователь funnel_bot создан"
 
 # copy files to user home path
 mv /root/easy-funnel-bot/* /home/funnel_bot/ && echo "Файлы перенесены в директорию пользователя бота."
@@ -83,7 +83,7 @@ runuser -l funnel_bot -c "export PATH=$HOME/.local/bin:$PATH" && echo "INSTALL.S
 # install daemon systemctl service
 cat > /etc/systemd/system/easy-funnel-bot.service << EOF
 [Unit]
-Description=L.A.P.S. Lab funnel Bot v0.1
+Description=L.A.P.S. Lab Easy Funnel Bot v0.1
 After=syslog.target
 After=network.target
 
