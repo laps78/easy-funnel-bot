@@ -31,7 +31,7 @@ sudo apt-get install nodejs && echo "INSTALL.SH: NODEJS установлен (v1
 cd easy-funnel-bot && npm i && echo "INSTALL.sh: npm-зависимости установлены."
 
 # create bot user
-clear
+#clear
 echo "============================================================"
 echo "|| СОЗДАНИЕ ПОЛЬЗОВАТЕЛЯ НА СЕРВЕРЕ      <<< L.A.P.S. Lab ||"
 echo "||--------------------------------------------------------||"
@@ -53,7 +53,7 @@ runuser -l funnel_bot -c "export PATH=$HOME/.local/bin:$PATH" && echo "INSTALL.S
 
 # create env & set api tokens
 #clear
-touch /root/.env && echo "INSTALL.sh: .env создан."
+touch .env && echo "INSTALL.sh: .env создан в директории. ($PATH)"
 echo ""
 echo "============================================================"
 echo "|| ПОДКЛЮЧЕНИЕ К API TELEGRAM            <<< L.A.P.S. Lab ||"
@@ -71,7 +71,7 @@ read TG_TOKEN
 echo "TG_API_KEY=$TG_TOKEN" > .env && echo "INSTALL.sh: telegram api токен установлен."
 echo "" >> .env && echo "Пустая строка в конце файла задана." && echo "Переменные окружения записаны."
 
-mv .env /home/funnel-bot/.env && echo "Файл окружения перенесен в корневую папку приложения."
+mv /easy-funnel-bot/.env /home/funnel-bot/.env && echo "Файл окружения перенесен в корневую папку приложения."
 chown funnel_bot:funnel_bot /home/funnel-bot/.env && echo "Права на файл окружения переданы пользователю бота."
 
 #runuser -l funnel_bot -c "pm2 start /home/funnel_bot/easy-funnel-bot/index.js" && echo "INSTALL.SH: pm2 для index.js запущен успешно."
