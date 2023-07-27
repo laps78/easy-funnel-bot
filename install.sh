@@ -45,14 +45,14 @@ adduser funnel_bot && echo "Пользователь funnel_bot создан"
 
 
 # copy files to user home path
-mv /root/easy-funnel-bot/* /home/funnel_bot/
-chown funnel_bot:funnel_bot /home/funnel_bot/
+mv /root/easy-funnel-bot/* /home/funnel_bot/ && echo "Файлы перенесены в директорию пользователя бота."
+chown funnel_bot:funnel_bot /home/funnel_bot/ && echo "Права на управление файлами переданы пользователю"
 
 # switch to non-root user & configure user environment
 runuser -l funnel_bot -c "export PATH=$HOME/.local/bin:$PATH" && echo "INSTALL.SH: HOME path установлено"
 
 # create env & set api tokens
-clear
+#clear
 touch .env
 echo ""
 echo "============================================================"
