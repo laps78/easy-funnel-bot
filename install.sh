@@ -28,7 +28,7 @@ sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y && echo "INSTAL
 curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
 sudo apt-get install nodejs && echo "INSTALL.SH: NODEJS установлен (v16)."
 
-npm install
+cd easy-funnel-bot && npm i && echo "INSTALL.sh: npm-зависимости установлены."
 
 # create bot user
 clear
@@ -50,7 +50,6 @@ chown funnel_bot:funnel_bot /home/funnel_bot/
 
 # switch to non-root user & configure user environment
 runuser -l funnel_bot -c "export PATH=$HOME/.local/bin:$PATH" && echo "INSTALL.SH: HOME path установлено"
-runuser -l funnel_bot -c "cd funnel_bot && npm i && echo "INSTALL.SH: Требуемые модули библиотек npm подключены."
 
 # create env & set api tokens
 clear
@@ -104,5 +103,3 @@ clear
 echo "Установка завершена."
 echo "запрос текущего состояния бота:"
 systemctl status easy-funnel-bot
-
-
