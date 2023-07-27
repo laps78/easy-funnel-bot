@@ -30,6 +30,7 @@ sudo apt-get install nodejs -y && node_version=$(node -v) && npm_version=$(npm -
 sudo npm install pm2 -g && pm2_version=$(npm view pm2) && echo "pm2 установлен: $pm2_version"
 # install npm deps
 cd easy-funnel-bot && npm install && echo "INSTALL.sh: npm-зависимости установлены."
+npm test && echo "Тестирование jest успешно."
 npm install dotenv && dotenv_view=$(npm view dotenv)
 echo "$dotenv_view доустановлен"
 
