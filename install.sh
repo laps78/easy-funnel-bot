@@ -26,7 +26,7 @@ sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y && echo "INSTAL
 
 # install node-js
 curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
-sudo apt-get install nodejs npm -y && node_version=$(node -v) && npm_version=$(npm -v) && echo "INSTALL.SH: NODEJS установлен (node v. $node_version, npm v. $npm_version)."
+sudo apt-get install nodejs -y && node_version=$(node -v) && npm_version=$(npm -v) && echo "INSTALL.SH: NODEJS установлен (node v. $node_version, npm v. $npm_version)."
 
 cd easy-funnel-bot && npm i && echo "INSTALL.sh: npm-зависимости установлены."
 
@@ -43,17 +43,12 @@ echo "|| данные можно не указывать - просто нажи
 echo "============================================================"
 adduser funnel_bot && echo "Пользователь funnel_bot создан"
 
-
-# copy files to user home path
-mv /root/easy-funnel-bot/* /home/funnel_bot/ && echo "Файлы перенесены в директорию пользователя бота."
-chown funnel_bot:funnel_bot /home/funnel_bot/ && echo "Права на управление файлами переданы пользователю"
-
-# switch to non-root user & configure user environment
-runuser -l funnel_bot -c "export PATH=$HOME/.local/bin:$PATH" && echo "INSTALL.SH: HOME path установлено"
+pwd
+ls -A
 
 # create env & set api tokens
 #clear
-touch .env && echo "INSTALL.sh: .env создан в директории. ($PATH)"
+touch .env && place=$(pwd) && echo "INSTALL.sh: .env создан в директории. ($place))"
 echo ""
 echo "============================================================"
 echo "|| ПОДКЛЮЧЕНИЕ К API TELEGRAM            <<< L.A.P.S. Lab ||"
@@ -70,6 +65,15 @@ echo "============================================================"
 read TG_TOKEN
 echo "TG_API_KEY=$TG_TOKEN" > .env && echo "INSTALL.sh: telegram api токен установлен."
 echo "" >> .env && echo "Пустая строка в конце файла задана." && echo "Переменные окружения записаны."
+
+# copy files to user home path
+mv /root/easy-funnel-bot/* /home/funnel_bot/ && echo "Файлы перенесены в директорию пользователя бота."
+chown funnel_bot:funnel_bot /home/funnel_bot/ && echo "Права на управление файлами переданы пользователю"
+
+# switch to non-root user & configure user environment
+runuser -l funnel_bot -c "export PATH=$HOME/.local/bin:$PATH" && echo "INSTALL.SH: HOME path установлено"
+
+
 
 mv /easy-funnel-bot/.env /home/funnel-bot/.env && echo "Файл окружения перенесен в корневую папку приложения."
 chown funnel_bot:funnel_bot /home/funnel-bot/.env && echo "Права на файл окружения переданы пользователю бота."
