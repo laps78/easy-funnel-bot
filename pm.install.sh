@@ -28,9 +28,9 @@ sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y && echo "INSTAL
 curl -sL https://deb.nodesource.com/setup_18.x | sudo -E bash -
 sudo apt-get install nodejs -y && node_version=$(node -v) && npm_version=$(npm -v) && echo "INSTALL.SH: NODEJS установлен (node v. $node_version, npm v. $npm_version)."
 sudo npm install pm2 -g && pm2_version=$(npm view pm2) && echo "pm2 установлен: $pm2_version"
+
 # install npm deps
 cd easy-funnel-bot && npm install && echo "INSTALL.sh: npm-зависимости установлены."
-npm test && echo "Тестирование jest успешно."
 npm install dotenv && dotenv_view=$(npm view dotenv)
 echo "$dotenv_view доустановлен"
 
@@ -54,62 +54,14 @@ read TG_TOKEN -r
 echo "TG_API_KEY=$TG_TOKEN" > .env && echo "INSTALL.sh: telegram api токен установлен."
 echo "" >> .env && echo "Пустая строка в конце файла задана." && echo "Переменные окружения записаны."
 
-# # create bot system user
-# #clear
-# echo "============================================================"
-# echo "|| СОЗДАНИЕ ПОЛЬЗОВАТЕЛЯ НА СЕРВЕРЕ      <<< L.A.P.S. Lab ||"
-# echo "||--------------------------------------------------------||"
-# echo "|| Будет создан пользователь funnel_bot, будет предложено ||"
-# echo "|| ввести и подтвердить UNIX пароль, а также заполнить    ||"
-# echo "|| дополнительную информацию о пользователе. Обязательно  ||"
-# echo "|| требуется точно ввести и повторить пароль, остальные   ||"
-# echo "|| данные можно не указывать - просто нажимайте [enter].  ||"
-# echo "============================================================"
-# adduser funnel_bot && echo "Пользователь funnel_bot создан"
+# Auto tests
+npm test && echo "Тестирование jest успешно."
 
-# copy files to user home path
-# mv /root/easy-funnel-bot/* /home/funnel_bot/ && echo "Файлы перенесены в директорию пользователя бота."
-# chown funnel_bot:funnel_bot /home/funnel_bot/ && echo "Права на управление файлами переданы пользователю"
-
-# switch to non-root user & configure user environment
-# runuser -l funnel_bot -c "export PATH=$HOME/.local/bin:$PATH" && echo "INSTALL.SH: HOME path установлено"
-
-
-
-# mv /easy-funnel-bot/.env /home/funnel-bot/.env && echo "Файл окружения перенесен в корневую папку приложения."
-# chown funnel_bot:funnel_bot /home/funnel-bot/.env && echo "Права на файл окружения переданы пользователю бота."
-
-#runuser -l funnel_bot -c "pm2 start /home/funnel_bot/easy-funnel-bot/index.js" && echo "INSTALL.SH: pm2 для index.js запущен успешно."
-
-# install daemon systemctl service
-# cat > /etc/systemd/system/easy-funnel-bot.service << EOF
-# [Unit]
-# Description=L.A.P.S. Lab Easy Funnel Bot v0.1
-# After=syslog.target
-# After=network.target
-
-# [Service]
-# Type=simple
-# User=funnel_bot
-# Group=funnel_bot
-# WorkingDirectory=/home/funnel_bot/
-# ExecStart=node index.js
-# OOMScoreAdjust=-100
-# RestartSec=5
-# Restart=always
-
-# [Install]
-# WantedBy=multi-user.target
-# EOF
-
-# systemctl daemon-reload && systemctl enable easy-funnel-bot && systemctl start easy-funnel-bot && echo "Демон настроен и активирован";
-
-# final commands
-#clear
-
-# daemons set
+# deamon set
 sudo pm2 start index.js --name "easy-funnel-bot" --watch && sudo pm2 startup && sudo pm2 save && echo "pm2 watcher установлен"
 
 echo "Установка завершена."
+pm2 restart
+
 echo "запрос текущего состояния бота:"
-# systemctl status easy-funnel-bot
+pm2 monit

@@ -5,6 +5,8 @@ import Logger from "./src/modules/logger/logger.js";
 
 const log = [];
 
+console.warn("Easy-Funnel-Bot started!");
+
 const timeIntervalsMS = {
   ms: 1,
   second: 1000,
