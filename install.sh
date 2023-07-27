@@ -71,7 +71,7 @@ read TG_TOKEN
 echo "TG_API_KEY=$TG_TOKEN" > .env && echo "INSTALL.sh: telegram api токен установлен."
 echo "" >> .env && echo "Пустая строка в конце файла задана." && echo "Переменные окружения записаны."
 
-mv /root/.env /home/funnel-bot/.env && echo "Файл окружения перенесен в корневую папку приложения."
+mv .env /home/funnel-bot/.env && echo "Файл окружения перенесен в корневую папку приложения."
 chown funnel_bot:funnel_bot /home/funnel-bot/.env && echo "Права на файл окружения переданы пользователю бота."
 
 #runuser -l funnel_bot -c "pm2 start /home/funnel_bot/easy-funnel-bot/index.js" && echo "INSTALL.SH: pm2 для index.js запущен успешно."
