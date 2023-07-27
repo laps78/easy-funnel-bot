@@ -99,7 +99,7 @@ EOF
 systemctl daemon-reload && systemctl enable easy-funnel-bot && systemctl start easy-funnel-bot && echo "Демон настроен и активирован";
 
 # final commands
-clear
+#clear
 echo "Установка завершена."
 echo "запрос текущего состояния бота:"
-#systemctl status easy-funnel-bot
+#gisystemctl status easy-funnel-bot
