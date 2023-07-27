@@ -75,8 +75,8 @@ runuser -l funnel_bot -c "export PATH=$HOME/.local/bin:$PATH" && echo "INSTALL.S
 
 
 
-mv /easy-funnel-bot/.env /home/funnel-bot/.env && echo "Файл окружения перенесен в корневую папку приложения."
-chown funnel_bot:funnel_bot /home/funnel-bot/.env && echo "Права на файл окружения переданы пользователю бота."
+# mv /easy-funnel-bot/.env /home/funnel-bot/.env && echo "Файл окружения перенесен в корневую папку приложения."
+# chown funnel_bot:funnel_bot /home/funnel-bot/.env && echo "Права на файл окружения переданы пользователю бота."
 
 #runuser -l funnel_bot -c "pm2 start /home/funnel_bot/easy-funnel-bot/index.js" && echo "INSTALL.SH: pm2 для index.js запущен успешно."
 
@@ -107,4 +107,4 @@ systemctl daemon-reload && systemctl enable easy-funnel-bot && systemctl start e
 #clear
 echo "Установка завершена."
 echo "запрос текущего состояния бота:"
-#gisystemctl status easy-funnel-bot
+systemctl status easy-funnel-bot
