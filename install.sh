@@ -102,4 +102,4 @@ systemctl daemon-reload && systemctl enable easy-funnel-bot && systemctl start e
 clear
 echo "Установка завершена."
 echo "запрос текущего состояния бота:"
-systemctl status easy-funnel-bot
+#systemctl status easy-funnel-bot
