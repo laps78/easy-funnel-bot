@@ -1,4 +1,5 @@
 import botConfig from "./src/getenv.js";
+import { Telegraf } from "telegraf";
 import bot from "./src/tg.js";
 import messages from "./src/messages.js";
 import logo from "./src/modules/logoMaker/logo.js";
@@ -18,7 +19,7 @@ const timeIntervalsMS = {
 };
 
 // make a bot
-botConfig.interval = timeIntervalsMS.day;
+botConfig.interval = timeIntervalsMS.second * 3;
 
 // INIT MODULES
 // init logger
@@ -26,9 +27,8 @@ const logger = new Logger();
 
 bot.start(async (ctx) => {
   if (logger) {
-    logger.writeLog(
-      `Бот запущен ${ctx.from.id}: ${ctx.from.first_name} ${ctx.from.last_name}`
-    );
+    const logMessage = `Бот запущен ${ctx.from.id}: ${ctx.from.first_name} ${ctx.from.last_name}`;
+    logger.writeLog(logMessage);
   }
   const greetingMessage = messages.shift();
   await bot.telegram.sendPhoto(ctx.from.id, {
@@ -59,11 +59,13 @@ function sendMessages(ctx) {
       },
     });
     if (logger) {
-      logger.writeLog(
-        ` Пользователь ${ctx.from.id} (${ctx.from.first_name} ${
-          ctx.from.last_name
-        }) получил сообщение №${message.id + 1}`
-      );
+      const logMessage = ` Пользователь ${ctx.from.id} (${
+        ctx.from.first_name
+      } ${ctx.from.last_name}) получил сообщение №${message.id + 1}`;
+      logger.writeLog(logMessage);
+
+      // log to admin
+      await ctx.telegram.sendMessage(botConfig.admin_id, logMessage);
     }
     if (messages.length === 0) {
       clearInterval(messageInterval);

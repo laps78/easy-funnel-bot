@@ -10,6 +10,8 @@ const botConfig = {
   tg: {
     tg_api_key: process.env.TG_API_KEY,
   },
+  admin_id: 1217863849,
+  admin_name: "Мария",
 };
 
 export default botConfig;
