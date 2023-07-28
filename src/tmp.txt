@@ -1,0 +1,993 @@
+    chat: {
+      id: 1217863849,
+      first_name: 'Мария',
+      last_name: 'Мастер Таро',
+      username: 'MariaLapteva_86',
+      type: 'private'
+    },
+    date: 1690529399,
+    text: '/start',
+    entities: [ [Object] ]
+  }
+}
+file:///home/laps/%D0%9F%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D1%8B/GITHUB/easy-funnel-bot/index.js:35
+    source: greetingMessage.image_links[0],
+                                       ^
+
+TypeError: Cannot read properties of undefined (reading '0')
+    at file:///home/laps/%D0%9F%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D1%8B/GITHUB/easy-funnel-bot/index.js:35:40
+    at /home/laps/Проекты/GITHUB/easy-funnel-bot/node_modules/telegraf/lib/composer.js:117:20
+    at /home/laps/Проекты/GITHUB/easy-funnel-bot/node_modules/telegraf/lib/composer.js:378:49
+    at /home/laps/Проекты/GITHUB/easy-funnel-bot/node_modules/telegraf/lib/composer.js:167:111
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async execute (/home/laps/Проекты/GITHUB/easy-funnel-bot/node_modules/telegraf/lib/composer.js:485:17)
+    at async /home/laps/Проекты/GITHUB/easy-funnel-bot/node_modules/telegraf/lib/composer.js:486:21
+    at async execute (/home/laps/Проекты/GITHUB/easy-funnel-bot/node_modules/telegraf/lib/composer.js:485:17)
+    at async /home/laps/Проекты/GITHUB/easy-funnel-bot/node_modules/p-timeout/index.js:50:13
+ ✘ laps@L  ~/Проекты/GITHUB/easy-funnel-bot   main  npm start  
+
+> tarot-funnel-bot@1.0.0 start
+> npm test && node index.js
+
+
+> tarot-funnel-bot@1.0.0 test
+> node --experimental-vm-modules ./node_modules/.bin/jest
+
+(node:11249) ExperimentalWarning: VM Modules is an experimental feature. This feature could change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+ PASS  src/__tests__/messages.test.js
+  ● Console
+
+    console.info
+      Тестирование массива сообщений бота...
+
+      at info (src/__tests__/messages.test.js:3:9)
+
+    console.info
+      Проверка сообщений в массиве
+
+      at info (src/__tests__/messages.test.js:17:9)
+
+ PASS  src/__tests__/tgbot.test.js
+(node:11248) ExperimentalWarning: VM Modules is an experimental feature. This feature could change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:11255) ExperimentalWarning: VM Modules is an experimental feature. This feature could change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+ PASS  src/__tests__/getenv.test.js
+ PASS  src/__tests__/index.test.js
+
+Test Suites: 4 passed, 4 total
+Tests:       12 passed, 12 total
+Snapshots:   0 total
+Time:        1.97 s, estimated 2 s
+Ran all test suites.
+***********************************************************************
+* ______   _______   ________  ________        ______        ______   *
+* ___  /   ___    |  ___  __  __  ___/        ___  / ______ ___  /_   *
+* __  /    __  /| |  __  /_/ / _____          __  /  _  __  /_  __  ' *
+* _  /______  ___ |___  ____/______/ /__      _  /___/ /_/ /_  /_/ /  *
+* /_____/(_)_/  |_|(_)_/    _(_)____/_(_)      /_____/__,_/ /_.___/   *
+*                                                                     *
+***********************************************************************
+L.A.P.S. GPT TELEGRAM BOT ATOMATIC FUNNEL FOR SPRINTBOX v0.1.2:
+
+    28.07.2023 (10:31:12): Бот запущен 950322101: Евгений Лаптев.
+    
+Бот запущен 950322101: Евгений Лаптев
+^C
+ ✘ laps@L  ~/Проекты/GITHUB/easy-funnel-bot   main ±  npm start
+
+> tarot-funnel-bot@1.0.0 start
+> npm test && node index.js
+
+
+> tarot-funnel-bot@1.0.0 test
+> node --experimental-vm-modules ./node_modules/.bin/jest
+
+(node:11723) ExperimentalWarning: VM Modules is an experimental feature. This feature could change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+ PASS  src/__tests__/getenv.test.js
+(node:11724) ExperimentalWarning: VM Modules is an experimental feature. This feature could change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+ PASS  src/__tests__/messages.test.js
+  ● Console
+
+    console.info
+      Тестирование массива сообщений бота...
+
+      at info (src/__tests__/messages.test.js:3:9)
+
+    console.info
+      Проверка сообщений в массиве
+
+      at info (src/__tests__/messages.test.js:17:9)
+
+(node:11735) ExperimentalWarning: VM Modules is an experimental feature. This feature could change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+ PASS  src/__tests__/tgbot.test.js
+ PASS  src/__tests__/index.test.js
+
+Test Suites: 4 passed, 4 total
+Tests:       12 passed, 12 total
+Snapshots:   0 total
+Time:        1.799 s, estimated 2 s
+Ran all test suites.
+***********************************************************************
+* ______   _______   ________  ________        ______        ______   *
+* ___  /   ___    |  ___  __  __  ___/        ___  / ______ ___  /_   *
+* __  /    __  /| |  __  /_/ / _____          __  /  _  __  /_  __  ' *
+* _  /______  ___ |___  ____/______/ /__      _  /___/ /_/ /_  /_/ /  *
+* /_____/(_)_/  |_|(_)_/    _(_)____/_(_)      /_____/__,_/ /_.___/   *
+*                                                                     *
+***********************************************************************
+L.A.P.S. GPT TELEGRAM BOT ATOMATIC FUNNEL FOR SPRINTBOX v0.1.2:
+
+    28.07.2023 (10:33:14): Бот запущен 950322101: Евгений Лаптев.
+    
+Бот запущен 950322101: Евгений Лаптев
+^C
+ ✘ laps@L  ~/Проекты/GITHUB/easy-funnel-bot   main ±  npm start
+
+> tarot-funnel-bot@1.0.0 start
+> npm test && node index.js
+
+
+> tarot-funnel-bot@1.0.0 test
+> node --experimental-vm-modules ./node_modules/.bin/jest
+
+(node:12140) ExperimentalWarning: VM Modules is an experimental feature. This feature could change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+ PASS  src/__tests__/getenv.test.js
+(node:12134) ExperimentalWarning: VM Modules is an experimental feature. This feature could change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+ PASS  src/__tests__/messages.test.js
+  ● Console
+
+    console.info
+      Тестирование массива сообщений бота...
+
+      at info (src/__tests__/messages.test.js:3:9)
+
+    console.info
+      Проверка сообщений в массиве
+
+      at info (src/__tests__/messages.test.js:17:9)
+
+ PASS  src/__tests__/tgbot.test.js
+(node:12128) ExperimentalWarning: VM Modules is an experimental feature. This feature could change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+ PASS  src/__tests__/index.test.js
+
+Test Suites: 4 passed, 4 total
+Tests:       12 passed, 12 total
+Snapshots:   0 total
+Time:        1.965 s, estimated 2 s
+Ran all test suites.
+***********************************************************************
+* ______   _______   ________  ________        ______        ______   *
+* ___  /   ___    |  ___  __  __  ___/        ___  / ______ ___  /_   *
+* __  /    __  /| |  __  /_/ / _____          __  /  _  __  /_  __  ' *
+* _  /______  ___ |___  ____/______/ /__      _  /___/ /_/ /_  /_/ /  *
+* /_____/(_)_/  |_|(_)_/    _(_)____/_(_)      /_____/__,_/ /_.___/   *
+*                                                                     *
+***********************************************************************
+L.A.P.S. GPT TELEGRAM BOT ATOMATIC FUNNEL FOR SPRINTBOX v0.1.2:
+
+    28.07.2023 (10:34:45): Бот запущен 950322101: Евгений Лаптев.
+    
+Бот запущен 950322101: Евгений Лаптев
+
+    28.07.2023 (10:35:04): Бот запущен 1217863849: Мария Мастер Таро.
+    
+Бот запущен 1217863849: Мария Мастер Таро
+
+    28.07.2023 (10:35:16): Бот запущен 1217863849: Мария Мастер Таро.
+    
+Бот запущен 1217863849: Мария Мастер Таро
+
+    28.07.2023 (10:43:07): Бот запущен 872692878: Анастасия undefined.
+    
+Бот запущен 872692878: Анастасия undefined
+
+    28.07.2023 (11:15:20): Бот запущен 1625788478: AZ Анжелика undefined.
+    
+Бот запущен 1625788478: AZ Анжелика undefined
+
+    28.07.2023 (11:27:39): Бот запущен 1176255261: МашЭ undefined.
+    
+Бот запущен 1176255261: МашЭ undefined
+
+    28.07.2023 (12:03:06): Бот запущен 5141490553: Светлана undefined.
+    
+Бот запущен 5141490553: Светлана undefined
+Unhandled error while processing {
+  update_id: 23532744,
+  message: {
+    message_id: 1784,
+    from: {
+      id: 5141490553,
+      is_bot: false,
+      first_name: 'Светлана',
+      language_code: 'ru'
+    },
+    chat: { id: 5141490553, first_name: 'Светлана', type: 'private' },
+    date: 1690534986,
+    text: '/start',
+    entities: [ [Object] ]
+  }
+}
+file:///home/laps/%D0%9F%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D1%8B/GITHUB/easy-funnel-bot/index.js:42
+    source: greetingMessage.image_link,
+                            ^
+
+TypeError: Cannot read properties of undefined (reading 'image_link')
+    at file:///home/laps/%D0%9F%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D1%8B/GITHUB/easy-funnel-bot/index.js:42:29
+    at /home/laps/Проекты/GITHUB/easy-funnel-bot/node_modules/telegraf/lib/composer.js:117:20
+    at /home/laps/Проекты/GITHUB/easy-funnel-bot/node_modules/telegraf/lib/composer.js:378:49
+    at /home/laps/Проекты/GITHUB/easy-funnel-bot/node_modules/telegraf/lib/composer.js:167:111
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async execute (/home/laps/Проекты/GITHUB/easy-funnel-bot/node_modules/telegraf/lib/composer.js:485:17)
+    at async /home/laps/Проекты/GITHUB/easy-funnel-bot/node_modules/telegraf/lib/composer.js:486:21
+    at async execute (/home/laps/Проекты/GITHUB/easy-funnel-bot/node_modules/telegraf/lib/composer.js:485:17)
+    at async /home/laps/Проекты/GITHUB/easy-funnel-bot/node_modules/p-timeout/index.js:50:13
+ ✘ laps@L  ~/Проекты/GITHUB/easy-funnel-bot   main ±  git status
+Текущая ветка: main
+Эта ветка соответствует «origin/main».
+
+Изменения, которые не в индексе для коммита:
+  (используйте «git add <файл>...», чтобы добавить файл в индекс)
+  (используйте «git restore <файл>...», чтобы отменить изменения в рабочем каталоге)
+        изменено:      index.js
+        изменено:      src/messages.js
+
+индекс пуст (используйте «git add» и/или «git commit -a»)
+ laps@L  ~/Проекты/GITHUB/easy-funnel-bot   main ±  git commit -a -m "messages image link fixed"
+[main cae3319] messages image link fixed
+ 2 files changed, 18 insertions(+), 7 deletions(-)
+ laps@L  ~/Проекты/GITHUB/easy-funnel-bot  ↱ main  git push
+Перечисление объектов: 9, готово.
+Подсчет объектов: 100% (9/9), готово.
+При сжатии изменений используется до 4 потоков
+Сжатие объектов: 100% (5/5), готово.
+Запись объектов: 100% (5/5), 695 байтов | 695.00 КиБ/с, готово.
+Всего 5 (изменений 4), повторно использовано 0 (изменений 0), повторно использовано пакетов 0
+remote: Resolving deltas: 100% (4/4), completed with 4 local objects.
+To https://github.com/laps78/easy-funnel-bot
+   dfe614f..cae3319  main -> main
+ laps@L  ~/Проекты/GITHUB/easy-funnel-bot   main  npm start
+
+> tarot-funnel-bot@1.0.0 start
+> npm test && node index.js
+
+
+> tarot-funnel-bot@1.0.0 test
+> node --experimental-vm-modules ./node_modules/.bin/jest
+
+(node:24602) ExperimentalWarning: VM Modules is an experimental feature. This feature could change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+ PASS  src/__tests__/messages.test.js (6.318 s)
+  ● Console
+
+    console.info
+      Тестирование массива сообщений бота...
+
+      at info (src/__tests__/messages.test.js:3:9)
+
+    console.info
+      Проверка сообщений в массиве
+
+      at info (src/__tests__/messages.test.js:17:9)
+
+(node:24608) ExperimentalWarning: VM Modules is an experimental feature. This feature could change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+ PASS  src/__tests__/getenv.test.js (6.693 s)
+(node:24600) ExperimentalWarning: VM Modules is an experimental feature. This feature could change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+ PASS  src/__tests__/tgbot.test.js (7.399 s)
+ PASS  src/__tests__/index.test.js
+
+Test Suites: 4 passed, 4 total
+Tests:       12 passed, 12 total
+Snapshots:   0 total
+Time:        10.096 s
+Ran all test suites.
+***********************************************************************
+* ______   _______   ________  ________        ______        ______   *
+* ___  /   ___    |  ___  __  __  ___/        ___  / ______ ___  /_   *
+* __  /    __  /| |  __  /_/ / _____          __  /  _  __  /_  __  ' *
+* _  /______  ___ |___  ____/______/ /__      _  /___/ /_/ /_  /_/ /  *
+* /_____/(_)_/  |_|(_)_/    _(_)____/_(_)      /_____/__,_/ /_.___/   *
+*                                                                     *
+***********************************************************************
+L.A.P.S. GPT TELEGRAM BOT ATOMATIC FUNNEL FOR SPRINTBOX v0.1.2:
+
+    28.07.2023 (17:37:00): Бот запущен 5155378615: Анна Калентьева undefined.
+    
+Бот запущен 5155378615: Анна Калентьева undefined
+
+    28.07.2023 (17:37:00): Бот запущен 1790179766: Мама undefined.
+    
+Бот запущен 1790179766: Мама undefined
+
+    28.07.2023 (17:37:00): Бот запущен 5763824450: не важно undefined.
+    
+Бот запущен 5763824450: не важно undefined
+
+    28.07.2023 (17:37:00): Бот запущен 1159813220: Мария Цапля.
+    
+Бот запущен 1159813220: Мария Цапля
+
+    28.07.2023 (17:37:00): Бот запущен 1055918952: Elishka undefined.
+    
+Бот запущен 1055918952: Elishka undefined
+
+    28.07.2023 (17:37:00): Бот запущен 5252340652: . undefined.
+    
+Бот запущен 5252340652: . undefined
+
+    28.07.2023 (17:37:01): Бот запущен 704825109: саб undefined.
+    
+Бот запущен 704825109: саб undefined
+
+    28.07.2023 (17:37:01): Бот запущен 6012771382: Willi Bane.
+    
+Бот запущен 6012771382: Willi Bane
+
+    28.07.2023 (17:37:01): Бот запущен 6294705589: No Im not.
+    
+Бот запущен 6294705589: No Im not
+
+    28.07.2023 (17:37:01): Бот запущен 6207197414: Анастасия Карунина.
+    
+Бот запущен 6207197414: Анастасия Карунина
+
+    28.07.2023 (17:37:01): Бот запущен 5256710673: rnx undefined.
+    
+Бот запущен 5256710673: rnx undefined
+
+    28.07.2023 (17:37:01): Бот запущен 509109910: Liubov Golubkova.
+    
+Бот запущен 509109910: Liubov Golubkova
+
+    28.07.2023 (17:37:01): Бот запущен 5951580960: Мики undefined.
+    
+Бот запущен 5951580960: Мики undefined
+
+    28.07.2023 (17:37:01): Бот запущен 6253120879: Valeria undefined.
+    
+Бот запущен 6253120879: Valeria undefined
+
+    28.07.2023 (17:37:01): Бот запущен 6275929737: Олька Хы.
+    
+Бот запущен 6275929737: Олька Хы
+
+    28.07.2023 (17:37:01): Бот запущен 5228605278: Аня undefined.
+    
+Бот запущен 5228605278: Аня undefined
+
+    28.07.2023 (17:37:01): Бот запущен 1516199449: ~Darkfang~ undefined.
+    
+Бот запущен 1516199449: ~Darkfang~ undefined
+
+    28.07.2023 (17:37:01): Бот запущен 1267394163: пенка) undefined.
+    
+Бот запущен 1267394163: пенка) undefined
+
+    28.07.2023 (17:37:01): Бот запущен 6064425696: Кристина undefined.
+    
+Бот запущен 6064425696: Кристина undefined
+
+    28.07.2023 (17:37:01): Бот запущен 908945479: Евгения undefined.
+    
+Бот запущен 908945479: Евгения undefined
+
+    28.07.2023 (17:37:01): Бот запущен 957108504: алина undefined.
+    
+Бот запущен 957108504: алина undefined
+
+    28.07.2023 (17:37:01): Бот запущен 742088366: ъ ъ.
+    
+Бот запущен 742088366: ъ ъ
+
+    28.07.2023 (17:37:01): Бот запущен 1420347757: Соня undefined.
+    
+Бот запущен 1420347757: Соня undefined
+Unhandled error while processing {
+  update_id: 23532752,
+  message: {
+    message_id: 1792,
+    from: {
+      id: 704825109,
+      is_bot: false,
+      first_name: 'саб',
+      username: 'saqwofag',
+      language_code: 'ru'
+    },
+    chat: {
+      id: 704825109,
+      first_name: 'саб',
+      username: 'saqwofag',
+      type: 'private'
+    },
+    date: 1690538778,
+    text: '/start',
+    entities: [ [Object] ]
+  }
+}
+Unhandled error while processing {
+  update_id: 23532753,
+  message: {
+    message_id: 1793,
+    from: {
+      id: 6012771382,
+      is_bot: false,
+      first_name: 'Willi',
+      last_name: 'Bane',
+      username: 'rakkun_anthony',
+      language_code: 'ru'
+    },
+    chat: {
+      id: 6012771382,
+      first_name: 'Willi',
+      last_name: 'Bane',
+      username: 'rakkun_anthony',
+      type: 'private'
+    },
+    date: 1690538865,
+    text: '/start',
+    entities: [ [Object] ]
+  }
+}
+Unhandled error while processing {
+  update_id: 23532754,
+  message: {
+    message_id: 1794,
+    from: {
+      id: 6012771382,
+      is_bot: false,
+      first_name: 'Willi',
+      last_name: 'Bane',
+      username: 'rakkun_anthony',
+      language_code: 'ru'
+    },
+    chat: {
+      id: 6012771382,
+      first_name: 'Willi',
+      last_name: 'Bane',
+      username: 'rakkun_anthony',
+      type: 'private'
+    },
+    date: 1690538955,
+    text: '/start',
+    entities: [ [Object] ]
+  }
+}
+Unhandled error while processing {
+  update_id: 23532755,
+  message: {
+    message_id: 1795,
+    from: {
+      id: 6294705589,
+      is_bot: false,
+      first_name: 'No',
+      last_name: 'Im not',
+      username: 'aizufa',
+      language_code: 'ru'
+    },
+    chat: {
+      id: 6294705589,
+      first_name: 'No',
+      last_name: 'Im not',
+      username: 'aizufa',
+      type: 'private'
+    },
+    date: 1690538968,
+    text: '/start',
+    entities: [ [Object] ]
+  }
+}
+Unhandled error while processing {
+  update_id: 23532756,
+  message: {
+    message_id: 1796,
+    from: {
+      id: 6207197414,
+      is_bot: false,
+      first_name: 'Анастасия',
+      last_name: 'Карунина',
+      language_code: 'ru'
+    },
+    chat: {
+      id: 6207197414,
+      first_name: 'Анастасия',
+      last_name: 'Карунина',
+      type: 'private'
+    },
+    date: 1690539206,
+    text: '/start',
+    entities: [ [Object] ]
+  }
+}
+Unhandled error while processing {
+  update_id: 23532758,
+  message: {
+    message_id: 1797,
+    from: {
+      id: 5252340652,
+      is_bot: false,
+      first_name: '.',
+      username: 'Vasilisa2357',
+      language_code: 'ru'
+    },
+    chat: {
+      id: 5252340652,
+      first_name: '.',
+      username: 'Vasilisa2357',
+      type: 'private'
+    },
+    date: 1690540148,
+    text: '/start',
+    entities: [ [Object] ]
+  }
+}
+Unhandled error while processing {
+  update_id: 23532759,
+  message: {
+    message_id: 1798,
+    from: {
+      id: 5252340652,
+      is_bot: false,
+      first_name: '.',
+      username: 'Vasilisa2357',
+      language_code: 'ru'
+    },
+    chat: {
+      id: 5252340652,
+      first_name: '.',
+      username: 'Vasilisa2357',
+      type: 'private'
+    },
+    date: 1690540149,
+    text: '/start',
+    entities: [ [Object] ]
+  }
+}
+Unhandled error while processing {
+  update_id: 23532760,
+  message: {
+    message_id: 1799,
+    from: {
+      id: 5252340652,
+      is_bot: false,
+      first_name: '.',
+      username: 'Vasilisa2357',
+      language_code: 'ru'
+    },
+    chat: {
+      id: 5252340652,
+      first_name: '.',
+      username: 'Vasilisa2357',
+      type: 'private'
+    },
+    date: 1690540150,
+    text: '/start',
+    entities: [ [Object] ]
+  }
+}
+Unhandled error while processing {
+  update_id: 23532761,
+  message: {
+    message_id: 1800,
+    from: {
+      id: 5252340652,
+      is_bot: false,
+      first_name: '.',
+      username: 'Vasilisa2357',
+      language_code: 'ru'
+    },
+    chat: {
+      id: 5252340652,
+      first_name: '.',
+      username: 'Vasilisa2357',
+      type: 'private'
+    },
+    date: 1690540151,
+    text: '/start',
+    entities: [ [Object] ]
+  }
+}
+Unhandled error while processing {
+  update_id: 23532762,
+  message: {
+    message_id: 1801,
+    from: {
+      id: 5252340652,
+      is_bot: false,
+      first_name: '.',
+      username: 'Vasilisa2357',
+      language_code: 'ru'
+    },
+    chat: {
+      id: 5252340652,
+      first_name: '.',
+      username: 'Vasilisa2357',
+      type: 'private'
+    },
+    date: 1690540151,
+    text: '/start',
+    entities: [ [Object] ]
+  }
+}
+Unhandled error while processing {
+  update_id: 23532763,
+  message: {
+    message_id: 1802,
+    from: {
+      id: 5252340652,
+      is_bot: false,
+      first_name: '.',
+      username: 'Vasilisa2357',
+      language_code: 'ru'
+    },
+    chat: {
+      id: 5252340652,
+      first_name: '.',
+      username: 'Vasilisa2357',
+      type: 'private'
+    },
+    date: 1690540153,
+    text: '/start',
+    entities: [ [Object] ]
+  }
+}
+Unhandled error while processing {
+  update_id: 23532764,
+  message: {
+    message_id: 1803,
+    from: {
+      id: 5256710673,
+      is_bot: false,
+      first_name: 'rnx',
+      username: 'rinqee',
+      language_code: 'ru'
+    },
+    chat: {
+      id: 5256710673,
+      first_name: 'rnx',
+      username: 'rinqee',
+      type: 'private'
+    },
+    date: 1690540246,
+    text: '/start',
+    entities: [ [Object] ]
+  }
+}
+Unhandled error while processing {
+  update_id: 23532766,
+  message: {
+    message_id: 1804,
+    from: {
+      id: 509109910,
+      is_bot: false,
+      first_name: 'Liubov',
+      last_name: 'Golubkova',
+      username: 'TimeCapsuIe',
+      language_code: 'ru'
+    },
+    chat: {
+      id: 509109910,
+      first_name: 'Liubov',
+      last_name: 'Golubkova',
+      username: 'TimeCapsuIe',
+      type: 'private'
+    },
+    date: 1690540501,
+    text: '/start',
+    entities: [ [Object] ]
+  }
+}
+Unhandled error while processing {
+  update_id: 23532767,
+  message: {
+    message_id: 1805,
+    from: {
+      id: 509109910,
+      is_bot: false,
+      first_name: 'Liubov',
+      last_name: 'Golubkova',
+      username: 'TimeCapsuIe',
+      language_code: 'ru'
+    },
+    chat: {
+      id: 509109910,
+      first_name: 'Liubov',
+      last_name: 'Golubkova',
+      username: 'TimeCapsuIe',
+      type: 'private'
+    },
+    date: 1690540511,
+    text: '/start',
+    entities: [ [Object] ]
+  }
+}
+Unhandled error while processing {
+  update_id: 23532768,
+  message: {
+    message_id: 1806,
+    from: {
+      id: 5951580960,
+      is_bot: false,
+      first_name: 'Мики',
+      language_code: 'ru'
+    },
+    chat: { id: 5951580960, first_name: 'Мики', type: 'private' },
+    date: 1690540713,
+    text: '/start',
+    entities: [ [Object] ]
+  }
+}
+Unhandled error while processing {
+  update_id: 23532769,
+  message: {
+    message_id: 1807,
+    from: {
+      id: 6253120879,
+      is_bot: false,
+      first_name: 'Valeria',
+      username: 'lercgick',
+      language_code: 'ru'
+    },
+    chat: {
+      id: 6253120879,
+      first_name: 'Valeria',
+      username: 'lercgick',
+      type: 'private'
+    },
+    date: 1690541771,
+    text: '/start',
+    entities: [ [Object] ]
+  }
+}
+Unhandled error while processing {
+  update_id: 23532771,
+  message: {
+    message_id: 1809,
+    from: {
+      id: 6275929737,
+      is_bot: false,
+      first_name: 'Олька',
+      last_name: 'Хы',
+      username: 'my_lolik',
+      language_code: 'ru'
+    },
+    chat: {
+      id: 6275929737,
+      first_name: 'Олька',
+      last_name: 'Хы',
+      username: 'my_lolik',
+      type: 'private'
+    },
+    date: 1690542784,
+    text: '/start',
+    entities: [ [Object] ]
+  }
+}
+Unhandled error while processing {
+  update_id: 23532772,
+  message: {
+    message_id: 1810,
+    from: {
+      id: 5228605278,
+      is_bot: false,
+      first_name: 'Аня',
+      language_code: 'ru'
+    },
+    chat: { id: 5228605278, first_name: 'Аня', type: 'private' },
+    date: 1690545051,
+    text: '/start',
+    entities: [ [Object] ]
+  }
+}
+Unhandled error while processing {
+  update_id: 23532773,
+  message: {
+    message_id: 1811,
+    from: {
+      id: 1516199449,
+      is_bot: false,
+      first_name: '~Darkfang~',
+      username: 'Dark23112',
+      language_code: 'ru'
+    },
+    chat: {
+      id: 1516199449,
+      first_name: '~Darkfang~',
+      username: 'Dark23112',
+      type: 'private'
+    },
+    date: 1690545188,
+    text: '/start',
+    entities: [ [Object] ]
+  }
+}
+Unhandled error while processing {
+  update_id: 23532774,
+  message: {
+    message_id: 1812,
+    from: {
+      id: 5228605278,
+      is_bot: false,
+      first_name: 'Аня',
+      language_code: 'ru'
+    },
+    chat: { id: 5228605278, first_name: 'Аня', type: 'private' },
+    date: 1690546092,
+    text: '/start',
+    entities: [ [Object] ]
+  }
+}
+Unhandled error while processing {
+  update_id: 23532775,
+  message: {
+    message_id: 1813,
+    from: {
+      id: 1267394163,
+      is_bot: false,
+      first_name: 'пенка)',
+      username: 'a_penka',
+      language_code: 'ru'
+    },
+    chat: {
+      id: 1267394163,
+      first_name: 'пенка)',
+      username: 'a_penka',
+      type: 'private'
+    },
+    date: 1690546921,
+    text: '/start',
+    entities: [ [Object] ]
+  }
+}
+Unhandled error while processing {
+  update_id: 23532776,
+  message: {
+    message_id: 1814,
+    from: {
+      id: 6064425696,
+      is_bot: false,
+      first_name: 'Кристина',
+      language_code: 'ru'
+    },
+    chat: { id: 6064425696, first_name: 'Кристина', type: 'private' },
+    date: 1690547692,
+    text: '/start',
+    entities: [ [Object] ]
+  }
+}
+Unhandled error while processing {
+  update_id: 23532777,
+  message: {
+    message_id: 1815,
+    from: {
+      id: 908945479,
+      is_bot: false,
+      first_name: 'Евгения',
+      username: 'evgee_niya',
+      language_code: 'ru'
+    },
+    chat: {
+      id: 908945479,
+      first_name: 'Евгения',
+      username: 'evgee_niya',
+      type: 'private'
+    },
+    date: 1690549884,
+    text: '/start',
+    entities: [ [Object] ]
+  }
+}
+Unhandled error while processing {
+  update_id: 23532778,
+  message: {
+    message_id: 1816,
+    from: {
+      id: 957108504,
+      is_bot: false,
+      first_name: 'алина',
+      username: 'xinelly',
+      language_code: 'ru'
+    },
+    chat: {
+      id: 957108504,
+      first_name: 'алина',
+      username: 'xinelly',
+      type: 'private'
+    },
+    date: 1690553866,
+    text: '/start',
+    entities: [ [Object] ]
+  }
+}
+Unhandled error while processing {
+  update_id: 23532779,
+  message: {
+    message_id: 1817,
+    from: {
+      id: 742088366,
+      is_bot: false,
+      first_name: 'ъ',
+      last_name: 'ъ',
+      username: 'a_illeren',
+      language_code: 'ru'
+    },
+    chat: {
+      id: 742088366,
+      first_name: 'ъ',
+      last_name: 'ъ',
+      username: 'a_illeren',
+      type: 'private'
+    },
+    date: 1690554231,
+    text: '/start',
+    entities: [ [Object] ]
+  }
+}
+Unhandled error while processing {
+  update_id: 23532781,
+  message: {
+    message_id: 1818,
+    from: {
+      id: 1420347757,
+      is_bot: false,
+      first_name: 'Соня',
+      username: 'Sofo4_ka_1',
+      language_code: 'ru'
+    },
+    chat: {
+      id: 1420347757,
+      first_name: 'Соня',
+      username: 'Sofo4_ka_1',
+      type: 'private'
+    },
+    date: 1690554452,
+    text: '/start',
+    entities: [ [Object] ]
+  }
+}
+Unhandled error while processing {
+  update_id: 23532782,
+  message: {
+    message_id: 1819,
+    from: {
+      id: 1420347757,
+      is_bot: false,
+      first_name: 'Соня',
+      username: 'Sofo4_ka_1',
+      language_code: 'ru'
+    },
+    chat: {
+      id: 1420347757,
+      first_name: 'Соня',
+      username: 'Sofo4_ka_1',
+      type: 'private'
+    },
+    date: 1690554460,
+    text: '/start',
+    entities: [ [Object] ]
+  }
+}
+file:///home/laps/%D0%9F%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D1%8B/GITHUB/easy-funnel-bot/index.js:49
+    source: greetingMessage.image_link,
+                            ^
+
+TypeError: Cannot read properties of undefined (reading 'image_link')
+    at file:///home/laps/%D0%9F%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D1%8B/GITHUB/easy-funnel-bot/index.js:49:29
+    at /home/laps/Проекты/GITHUB/easy-funnel-bot/node_modules/telegraf/lib/composer.js:117:20
+    at /home/laps/Проекты/GITHUB/easy-funnel-bot/node_modules/telegraf/lib/composer.js:378:49
+    at /home/laps/Проекты/GITHUB/easy-funnel-bot/node_modules/telegraf/lib/composer.js:167:111
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async execute (/home/laps/Проекты/GITHUB/easy-funnel-bot/node_modules/telegraf/lib/composer.js:485:17)
+    at async /home/laps/Проекты/GITHUB/easy-funnel-bot/node_modules/telegraf/lib/composer.js:486:21
+    at async execute (/home/laps/Проекты/GITHUB/easy-funnel-bot/node_modules/telegraf/lib/composer.js:485:17)
+    at async /home/laps/Проекты/GITHUB/easy-funnel-bot/node_modules/p-timeout/index.js:50:13
