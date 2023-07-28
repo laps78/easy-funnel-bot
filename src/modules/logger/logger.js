@@ -7,8 +7,6 @@ export default class Logger {
     this.interval = null;
     this.autologEveryMS = 1000 * 60 * 5;
     this.logFilePath = "logger.log";
-
-    //this.sheduleLogToFile(this.autologEveryMS);
   }
   /***
    * Готовит строку - таймштамп вида ДД.ММ.ГГГГ (ЧЧ:ММ:СС)
@@ -76,17 +74,5 @@ export default class Logger {
         console.log(`${this.timeStamp()}: log written to file`);
       }
     });
-  };
-
-  /***
-   * todo THROWS ERR_INVALID_ARG_TYPE
-   * Планирует интервал автосохранения массива @Logger.log в файл ./modules/logger/activity.log
-   ***/
-  sheduleLogToFile = (period) => {
-    // log to file every 5 minutes:
-    this.interval = setInterval(
-      this.saveLog.bind(String(this.log.join("\n"))), // TODO: THROWS ERR_INVALID_ARG_TYPE
-      period
-    );
   };
 }
