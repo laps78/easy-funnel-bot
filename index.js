@@ -19,7 +19,7 @@ const timeIntervalsMS = {
 };
 
 // make a bot
-botConfig.interval = timeIntervalsMS.second * 3;
+botConfig.interval = timeIntervalsMS.day;
 
 // INIT MODULES
 // init logger
@@ -65,7 +65,9 @@ function sendMessages(ctx) {
       logger.writeLog(logMessage);
 
       // log to admin
-      await ctx.telegram.sendMessage(botConfig.admin_id, logMessage);
+      if (botConfig.admin_id) {
+        await ctx.telegram.sendMessage(botConfig.admin_id, logMessage);
+      }
     }
     if (messages.length === 0) {
       clearInterval(messageInterval);
