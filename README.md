@@ -14,10 +14,10 @@ a funnel bot with e-mail &amp; telegram chating abilities
 git clone https://github.com/laps78/easy-funnel-bot
 ```
 
-2.2. Разрешаем исполнение инсталлятора (install.sh)
+2.2. Разрешаем исполнение инсталлятора (pm.install.sh)
 
 ```bash
-sudo chmod +x easy-funnel-bot/install.sh
+sudo chmod +x easy-funnel-bot/pm.install.sh
 ```
 
 ### Запустите установщик
@@ -25,10 +25,12 @@ sudo chmod +x easy-funnel-bot/install.sh
 2.3. Запускаем инсталлятор (install.sh)
 
 ```bash
-./easy-funnel-bot/install.sh
+./easy-funnel-bot/pm.install.sh
 ```
 
 Вы увидите начало процесса установки програмного обеспечения на удаленном сервере. Будут установлены обновления сборки серверного ПО и некоторые дополнительные пакеты, требуемые для работы приложения.
+
+При появлении какихлибо диалоговых окон - соглашайтесь на все (жмите [ENTER] или [y], затем [ENTER])
 
 В процессе установки потребуестя ввести вручную или скопировать/вставить некоторые дополнительные данные. Читайте, что пишет инсталлятор дайте ему то, что он хочет.
 
