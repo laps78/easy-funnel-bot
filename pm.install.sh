@@ -61,7 +61,5 @@ npm test && echo "Тестирование jest успешно."
 sudo pm2 start index.js --name "easy-funnel-bot" --watch && sudo pm2 startup && sudo pm2 save && echo "pm2 watcher установлен"
 
 echo "Установка завершена."
-pm2 restart
-
 echo "запрос текущего состояния бота:"
 pm2 monit
