@@ -1,11 +1,14 @@
-import fs from "fs";
+import { appendFile, createReadStream, openSync, closeSync } from "node:fs";
+import path from "node:path";
 
 export default class Logger {
   constructor() {
     this.log = [];
     this.interval = null;
+    this.autologEveryMS = 1000 * 60 * 5;
+    this.logFilePath = "logger.log";
 
-    this.sheduleLogToFile();
+    //this.sheduleLogToFile(this.autologEveryMS);
   }
   /***
    * Готовит строку - таймштамп вида ДД.ММ.ГГГГ (ЧЧ:ММ:СС)
@@ -38,7 +41,7 @@ export default class Logger {
    * Принимает строку @msg, маркирует таймштампом и пушит в массиа @Logger.log
    * и выводит лог в консоль
    ***/
-  writeLog = async (msg) => {
+  writeLog = (msg) => {
     console.info(`
     ${this.timeStamp()}: ${msg}.
     `);
@@ -50,11 +53,22 @@ export default class Logger {
     console.info(msg);
   };
 
+  loadLog() {
+    // Открываем файл для чтения
+    const reader = createReadStream(this.logFilePath);
+    // Закрываем файл
+    closeSync(file);
+    return reader.pipe(process.stdout);
+  }
+
   /***
    * Асинхронно пишет массив @Logger.log в файл ./modules/logger/activity.log
    ***/
-  saveLog = async () => {
-    fs.writeFile("activity.log", data.join("\n"), (error) => {
+  saveLog = (newData) => {
+    // Открываем файл для записи
+    const file = openSync(this.logFilePath, "w");
+    // Запись строк в файл
+    appendFile(file, newData, (error) => {
       console.log("writefile");
       if (error) {
         console.error(error);
@@ -65,10 +79,14 @@ export default class Logger {
   };
 
   /***
+   * todo THROWS ERR_INVALID_ARG_TYPE
    * Планирует интервал автосохранения массива @Logger.log в файл ./modules/logger/activity.log
    ***/
-  sheduleLogToFile = () => {
-    // log to file every 15 minutes:
-    this.interval = setInterval(this.saveLog, 1000 * 60);
+  sheduleLogToFile = (period) => {
+    // log to file every 5 minutes:
+    this.interval = setInterval(
+      this.saveLog.bind(String(this.log.join("\n"))), // TODO: THROWS ERR_INVALID_ARG_TYPE
+      period
+    );
   };
 }

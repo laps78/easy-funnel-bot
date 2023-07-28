@@ -1,7 +1,8 @@
 import botConfig from "./src/getenv.js";
 import bot from "./src/tg.js";
 import messages from "./src/messages.js";
-import { logo, makeLogo2Console } from "./src/modules/logoMaker.js";
+import logo from "./src/modules/logoMaker/logo.js";
+import makeLogo2Console from "./src/modules/logoMaker/logoMaker.js";
 import Logger from "./src/modules/logger/logger.js";
 
 const log = [];
