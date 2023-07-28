@@ -9,7 +9,7 @@ import Logger from "./src/modules/logger/logger.js";
 const log = [];
 
 makeLogo2Console(logo);
-
+let alreadyStarted = [];
 const timeIntervalsMS = {
   ms: 1,
   second: 1000,
@@ -25,14 +25,28 @@ botConfig.interval = timeIntervalsMS.day;
 // init logger
 const logger = new Logger();
 
+async function log2Admin(ctx, message) {
+  if (botConfig.admin_id) {
+    await ctx.telegram.sendMessage(botConfig.admin_id, message);
+  }
+}
+
 bot.start(async (ctx) => {
+  if (alreadyStarted.find((item) => item === ctx.from.id)) {
+    const logMessage = `${ctx.from.id()}(${ctx.from.first_name} ${ctx.from.last_name}) опять нажал(а) /start, заколебали блэт!`;
+    logger.writeLog(logMessage);
+    log2Admin(ctx, logMessage);
+    return;
+  }
+  alreadyStarted.push(ctx.from.id)
   if (logger) {
     const logMessage = `Бот запущен ${ctx.from.id}: ${ctx.from.first_name} ${ctx.from.last_name}`;
     logger.writeLog(logMessage);
+    log2Admin(ctx, logMessage);
   }
   const greetingMessage = messages.shift();
   await bot.telegram.sendPhoto(ctx.from.id, {
-    source: greetingMessage.image_links[0],
+    source: greetingMessage.image_link,
     caption: "Ваш персональный таролог",
   });
   await ctx.reply(
@@ -64,10 +78,7 @@ function sendMessages(ctx) {
       } ${ctx.from.last_name}) получил сообщение №${message.id + 1}`;
       logger.writeLog(logMessage);
 
-      // log to admin
-      if (botConfig.admin_id) {
-        await ctx.telegram.sendMessage(botConfig.admin_id, logMessage);
-      }
+      log2Admin(ctx, logMessage)
     }
     if (messages.length === 0) {
       clearInterval(messageInterval);
