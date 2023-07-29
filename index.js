@@ -20,7 +20,7 @@ const timeIntervalsMS = {
 };
 
 // make a bot
-botConfig.interval = timeIntervalsMS.second;
+botConfig.interval = timeIntervalsMS.day;
 
 // INIT MODULES
 // init logger
@@ -140,7 +140,10 @@ const sheduleMessages = (ctx) => {
 
 // Admin commands
 bot.hears("Покажи очередь!", (ctx) => {
-  if (ctx.from.id == 950322101 || ctx.from.id === botConfig.admin_id) {
+  if (
+    ctx.from.id == botConfig.developer_id ||
+    ctx.from.id === botConfig.admin_id
+  ) {
     const queue2list = (queue) => {
       let list = ``;
       queue.forEach((message) => {

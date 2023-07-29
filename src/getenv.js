@@ -11,8 +11,9 @@ const botConfig = {
     tg_api_key: process.env.TG_API_KEY,
   },
   admin_id: "1217863849",
+  developer_id: "950322101",
   admin_name: "Мария",
-  interval_to_check_tasks: 1000,
+  interval_to_check_tasks: 5 * 1000,
 };
 
 export default botConfig;
