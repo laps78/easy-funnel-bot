@@ -145,11 +145,16 @@ bot.hears("Покажи очередь!", (ctx) => {
     ctx.from.id === botConfig.admin_id
   ) {
     const queue2list = (queue) => {
+      let count = 0;
       let list = ``;
+      queue.sort((a, b) => a.sheduledTime - b.sheduledTime);
       queue.forEach((message) => {
-        list = `${list}${message.first_name} ${message.last_name} сообщение №${
-          message.index + 1
-        }: ${logger.timeStamp(new Date(+message.sheduledTime))}\n`;
+        ++count;
+        list = `${list}${count}. ${message.first_name} ${
+          message.last_name
+        } сообщение №${message.index + 1}: ${logger.timeStamp(
+          new Date(+message.sheduledTime)
+        )}\n`;
       });
       return list;
     };
@@ -166,7 +171,6 @@ const newSheduler = (ctx) => {
   let preSheduledTime = now.getTime();
   messages.forEach((message, index) => {
     preSheduledTime = preSheduledTime + botConfig.interval;
-    console.log(preSheduledTime);
     sheduledMessagesArray.push({
       id: ctx.from.id,
       first_name: ctx.from.first_name,
@@ -195,7 +199,6 @@ const taskChecker = async () => {
 };
 
 const sendMessage = async (id, message, first_name, last_name, index) => {
-  console.log(message);
   try {
     await bot.telegram.sendPhoto(id, {
       source: message.image_link,

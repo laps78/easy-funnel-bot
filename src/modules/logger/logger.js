@@ -52,7 +52,6 @@ export default class Logger {
       ${this.timeStamp()}: ${msg}.
       `
     );
-    console.info(msg);
   };
 
   loadLog() {
