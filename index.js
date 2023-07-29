@@ -64,7 +64,7 @@ bot.start(async (ctx) => {
  */
 const registerStartEvent = (ctx) => {
   if (isCatched(ctx.from.id)) {
-    const logMessage = `Кому-то не терпится провалиться ниже? \nПользователь ${ctx.from.id}(${ctx.from.first_name} ${ctx.from.last_name}) опять нажал(а) /start, заколебали блэт! Игнорирую.`;
+    const logMessage = `Кому-то не терпится провалиться ниже? \nПользователь ${ctx.from.id}(${ctx.from.first_name} ${ctx.from.last_name}) опять нажал(а) [start]!\nZаколебали блэт!\nИгнорирую.`;
     logger.writeLog(logMessage);
     log2Admin(logMessage);
     return;
@@ -100,7 +100,6 @@ const activateFunnel = (ctx) => {
     user_id: ctx.from.id,
   });
   newSheduler(ctx);
-  //sheduleMessages(ctx);
 };
 
 /**
@@ -109,7 +108,7 @@ const activateFunnel = (ctx) => {
  *
  */
 const sendGreeting = async (ctx) => {
-  const greetingMessage = messages.shift();
+  const greetingMessage = messages[0];
   await bot.telegram.sendPhoto(ctx.from.id, {
     source: greetingMessage.image_link,
     caption: "Ваш персональный таролог",
@@ -124,25 +123,11 @@ const sendGreeting = async (ctx) => {
   );
 };
 
-/**
- *
- * @param {object} ctx
- */
-const sheduleMessages = (ctx) => {
-  let messageInterval = setInterval(async () => {
-    let message = messages.shift();
-    sendMessage(message);
-    if (messages.length === 0) {
-      clearInterval(messageInterval);
-    }
-  }, botConfig.interval);
-};
-
 // Admin commands
 bot.hears("Покажи очередь!", (ctx) => {
   if (
     ctx.from.id == botConfig.developer_id ||
-    ctx.from.id === botConfig.admin_id
+    ctx.from.id == botConfig.admin_id
   ) {
     const queue2list = (queue) => {
       let count = 0;
@@ -169,7 +154,9 @@ bot.hears("Покажи очередь!", (ctx) => {
 const newSheduler = (ctx) => {
   const now = new Date();
   let preSheduledTime = now.getTime();
-  messages.forEach((message, index) => {
+  const  splicedMessages = messages;
+  splicedMessages.splice(0, 1);
+  splicedMessages.forEach((message, index) => {
     preSheduledTime = preSheduledTime + botConfig.interval;
     sheduledMessagesArray.push({
       id: ctx.from.id,
