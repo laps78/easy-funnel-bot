@@ -10,8 +10,13 @@ export default class Logger {
   /***
    * Готовит строку - таймштамп вида ДД.ММ.ГГГГ (ЧЧ:ММ:СС)
    */
-  timeStamp = () => {
-    const moment = new Date();
+  timeStamp = (date) => {
+    let moment = null;
+    if (date === undefined) {
+      moment = new Date();
+    } else {
+      moment = date;
+    }
     const dateElements = {
       date: moment.getDate(),
       month: moment.getMonth() + 1,

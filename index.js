@@ -149,7 +149,7 @@ bot.hears("Покажи очередь!", (ctx) => {
       queue.forEach((message) => {
         list = `${list}${message.first_name} ${message.last_name} сообщение №${
           message.index + 1
-        }: ${logger.timeStamp(message.sheduledTime)}\n`;
+        }: ${logger.timeStamp(new Date(+message.sheduledTime))}\n`;
       });
       return list;
     };
@@ -166,6 +166,7 @@ const newSheduler = (ctx) => {
   let preSheduledTime = now.getTime();
   messages.forEach((message, index) => {
     preSheduledTime = preSheduledTime + botConfig.interval;
+    console.log(preSheduledTime);
     sheduledMessagesArray.push({
       id: ctx.from.id,
       first_name: ctx.from.first_name,
