@@ -5,7 +5,6 @@ export default class Logger {
   constructor() {
     this.log = [];
     this.interval = null;
-    this.autologEveryMS = 1000 * 60 * 5;
     this.logFilePath = "logger.log";
   }
   /***
