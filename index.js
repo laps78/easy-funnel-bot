@@ -1,4 +1,5 @@
 import botConfig from "./src/getenv.js";
+import foundIds from "./src/modules/lost & found/foundids.js";
 import { Telegraf } from "telegraf";
 import bot from "./src/tg.js";
 import messages from "./src/messages.js";
@@ -123,26 +124,37 @@ const sendGreeting = async (ctx) => {
   );
 };
 
+// TODO недописан переводчи...
+const parseTasksFromMessage = (msg) => {
+  const lines = String(msg).split('\n');
+  for (let line in lines) {
+    const lineElements = line.split(' ');
+  }
+}
+
+const queue2list = (queue) => {
+  let count = 0;
+  let list = ``;
+  queue.sort((a, b) => a.sheduledTime - b.sheduledTime);
+  queue.forEach((message) => {
+    ++count;
+    list = `${list}${count}. ${message.first_name} ${
+      message.last_name
+    } сообщение №${message.index + 1}: ${logger.timeStamp(
+      new Date(+message.sheduledTime)
+    )}\n`;
+  });
+  return list;
+};
+  
 // Admin commands
+// show queue
 bot.hears("Покажи очередь!", (ctx) => {
   if (
     ctx.from.id == botConfig.developer_id ||
     ctx.from.id == botConfig.admin_id
   ) {
-    const queue2list = (queue) => {
-      let count = 0;
-      let list = ``;
-      queue.sort((a, b) => a.sheduledTime - b.sheduledTime);
-      queue.forEach((message) => {
-        ++count;
-        list = `${list}${count}. ${message.first_name} ${
-          message.last_name
-        } сообщение №${message.index + 1}: ${logger.timeStamp(
-          new Date(+message.sheduledTime)
-        )}\n`;
-      });
-      return list;
-    };
+    
     if (sheduledMessagesArray.length === 0) {
       ctx.reply("Очередь рассылки пуста.");
     } else {
@@ -210,7 +222,16 @@ const sendMessage = async (id, message, first_name, last_name, index) => {
   }
 };
 
+
 bot.launch();
 
 // Заводим проверку очереди сообщений для отправки
 const interval = setInterval(taskChecker, botConfig.interval_to_check_tasks);
+
+
+// // TMP code
+// if (foundIds) {
+//   const today2send = foundIds['28.07.2023'];
+//   console.log(today2send)
+//   today2send.forEach(id => sendMessage(id, messages[1], 'no name', 'noname', 1,));
+// }
