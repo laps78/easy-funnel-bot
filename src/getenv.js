@@ -14,6 +14,14 @@ const botConfig = {
   developer_id: "950322101",
   admin_name: "Мария",
   interval_to_check_tasks: 5 * 1000,
+  botStart: {
+    day: '28',
+    month: '07',
+    year: '2023',
+    hours: '10',
+    minutes: '00',
+    seconds: '00',
+  },
 };
 
 export default botConfig;

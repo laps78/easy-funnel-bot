@@ -1,6 +1,4 @@
 import botConfig from "./src/getenv.js";
-import foundIds from "./src/modules/lost & found/foundids.js";
-import { Telegraf } from "telegraf";
 import bot from "./src/tg.js";
 import messages from "./src/messages.js";
 import logo from "./src/modules/logoMaker/logo.js";
@@ -163,13 +161,21 @@ bot.hears("Покажи очередь!", (ctx) => {
   }
 });
 
-const newSheduler = (ctx) => {
+/**
+ * 
+ * @returns текущее время в UNIX формате
+ */
+const getCurrentTime = () => {
   const now = new Date();
-  let preSheduledTime = now.getTime();
-  const  splicedMessages = messages;
+  return now.getTime();
+}
+//TODO проверь, надо ли умножать на index?
+const newSheduler = (ctx) => {
+  let currentTime = getCurrentTime();
+  const splicedMessages = messages;
   splicedMessages.splice(0, 1);
   splicedMessages.forEach((message, index) => {
-    preSheduledTime = preSheduledTime + botConfig.interval;
+    preSheduledTime = currentTime + botConfig.interval * (index + 1);
     sheduledMessagesArray.push({
       id: ctx.from.id,
       first_name: ctx.from.first_name,
@@ -182,9 +188,8 @@ const newSheduler = (ctx) => {
 };
 
 const taskChecker = async () => {
-  const now = new Date();
   sheduledMessagesArray.forEach((task, index) => {
-    if (task.sheduledTime <= now.getTime()) {
+    if (task.sheduledTime <= getCurrentTime()) {
       sendMessage(
         task.id,
         task.message,
@@ -228,10 +233,100 @@ bot.launch();
 // Заводим проверку очереди сообщений для отправки
 const interval = setInterval(taskChecker, botConfig.interval_to_check_tasks);
 
+// TMP code ACTIVATE LOST & FOUND FUNNEL USERS
+const foundIds = {
+  '28.07.2023': [
+    2100265554,
+    6235801357,
+    590023980,
+    631825284,
+    908945479,
+    742088366,
+    742088366,
+    957108504,
+    6275929737,
+    5252340652,
+    1267394163,
+    509109910,
+    1420347757,
+    6253120879,
+    1516199449,
+    5951580960,
+    6294705589,
+    6012771382,
+    1159813220,
+    5228605278,
+    1790179766,
+    6207197414,
+    6064425696,
+    1055918952,
+    5155378615,
+    5141490553,
+    1176255261,
+    872692878,
+  ],
+  '30.07.2023': [
+    5427005061
+  ]
+};
 
-// // TMP code
-// if (foundIds) {
-//   const today2send = foundIds['28.07.2023'];
-//   console.log(today2send)
-//   today2send.forEach(id => sendMessage(id, messages[1], 'no name', 'noname', 1,));
-// }
+const sheduleFound = () => {
+  try {
+    if (foundIds) {
+      // убираем приветствие
+      const splicedMessages = messages
+      splicedMessages.splice(0, 1);
+  
+      for (let [key, value] of Object.entries(foundIds)) {
+        // dtae formater for this sheduler
+        const makeStartTime = (dateString) => {
+          const timedDateString = dateString + '.10.00';
+          const [day, month, year, hour, minute] = timedDateString.split('.');
+          return new Date(year, month - 1, day, hour, minute);
+        }
+        //console.log('Обработаем предуыдущие вступления от', key);
+        const startTime = makeStartTime(key);
+        // run throw array of ids
+        foundIds[key].map(id => {
+          //console.log('обрабатываем id:', id, `, который попал в воронку ${key}.`)
+          // определим какое количество интервалов бота ID находится в воронке
+          const intervalsInFunnel = Math.round((getCurrentTime() - startTime) / botConfig.interval);
+          //console.log(`этот ${id} крутится ${intervalsInFunnel} интервалов`)       
+  
+          // необходимо запланировать сообщения №№...
+          let sheduleMessagesFromIndex = null;
+          if (intervalsInFunnel === 0) {
+            const sheduleMessagesFromIndex = 0//отправлять сообщшения начиная с...
+          }
+          if (intervalsInFunnel > 0) {
+            const sheduleMessagesFromIndex = intervalsInFunnel - 1;
+            //console.log(`shedule from ${sheduleMessagesFromIndex}`)
+          }
+          // и оставшиеся закидываем в очередь
+          splicedMessages.forEach((message, index) => {
+            if (index >= intervalsInFunnel) {
+              sheduledMessagesArray.push(
+                {
+                  id: id,
+                  first_name: 'не поддерживается',
+                  last_name: 'не поддерживается',
+                  index: index,
+                  message: message,
+                  sheduledTime: new Date(startTime.getTime() + (botConfig.interval * index)),
+                }
+              );
+              // console.log(`pushing ${index}`)
+              // console.log(`sheduledTime: ${new Date(startTime.getTime() + (botConfig.interval * index))}`);
+            }
+          });
+        })
+      }
+    }
+    //console.log(sheduledMessagesArray);
+  } catch (error) {
+    console.log(error, error.statusText);
+  }
+  
+}
+
+sheduleFound();

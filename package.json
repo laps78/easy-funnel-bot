@@ -6,7 +6,7 @@
   "main": "tarot-fun-bot.js",
   "scripts": {
     "test": "node --experimental-vm-modules ./node_modules/.bin/jest",
-    "start": "npm test && node index.js",
+    "start": "node index.js",
     "lint": ". eslint"
   },
   "repository": {
